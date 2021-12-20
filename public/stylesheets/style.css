@@ -1,0 +1,76 @@
+html {
+    background-color: #edd382;
+    font-family: 'arial black', Arial, Helvetica, sans-serif;
+}
+header {
+    background-color: #020122;
+    display: flex;
+    color: #fc9e4f;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+nav {
+    float: right;
+    color:#fc9e4f;
+    display: flex;
+    font-size: 20px;
+}
+a {
+    color: #ff7b00;
+    text-decoration: none;
+    padding: 25px;
+}
+nav a {
+    margin: 0 50px 0 0;
+}
+.post {
+    margin: 25px;
+    border: #020122 solid 4px;
+    border-radius: 10px;
+}
+.title {
+    background-color: #020122;
+    color: #ff7b00;
+    padding: 10px;
+}
+.meta {
+    background-color: #fc9e4f;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.form-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+form {
+    margin: 25px;
+    border: #020122 solid 4px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #fc9e4f;
+    width: 30%;
+}
+form div {
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+}
+button {
+    background-color: #020122;
+    color: #fc9e4f;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+label {
+    color: #020122;
+}
+input{
+    background-color: #f2f3ae;
+    margin: 0 8px;
+}
