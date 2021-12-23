@@ -1,8 +1,24 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
+const { Post, User } = require('../models');
 
 router.get('/', (req, res) => {
-    res.render('homepage');
+    Post.findAll({
+        order: [['created_at', 'DESC']],
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    })
+    .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({ plain: true }));
+        res.render('homepage', { 
+            posts,
+            loggedIn: req.session.loggedIn
+        });
+    });
 });
 
 router.get('/login', (req, res) => {

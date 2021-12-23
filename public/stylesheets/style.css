@@ -19,9 +19,14 @@ a {
     color: #ff7b00;
     text-decoration: none;
     padding: 25px;
+    text-align: center;
+}
+h1 {
+    margin-left: 50px;
 }
 nav a {
-    margin: 0 50px 0 0;
+    margin: auto;
+    margin-right: 50px;
 }
 .post {
     margin: 25px;
@@ -108,4 +113,13 @@ h2 {
 }
 #post-title {
     width: 400px;
+}
+nav button {
+    color: #ff7b00;
+    text-decoration: none;
+    padding: 25px;
+    margin: 0 50px 0 0;
+    font-size: 20px;
+    font-family: 'arial black', Arial, Helvetica, sans-serif;
+    border: none;
 }

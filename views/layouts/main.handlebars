@@ -14,12 +14,19 @@
             <a href="/">The Technocracy</a>
         </h1>
         <nav>
+            {{#if loggedIn}}
+            <button id="logout">Logout</button>
+            {{else}}
             <a href="/login">Login</a>
+            {{/if}}
             <a href="/dashboard">Dashboard</a>
         </nav>
     </header>
     <main>
         {{{ body }}}
     </main>
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
 </body>
 </html>
