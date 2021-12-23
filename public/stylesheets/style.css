@@ -74,3 +74,38 @@ input{
     background-color: #f2f3ae;
     margin: 0 8px;
 }
+.dashboard {
+    color: #020122;
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+h2 {
+    float: left;
+    margin: 10px;
+}
+.dashboard a {
+    border-radius: 5px;
+    background-color: #020122;
+    padding: 12px;
+    float: right;
+}
+#post-story {
+    height: 100px;
+    width: 400px;
+}
+.new-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+}
+.new-post h2 {
+    margin: 20px;
+}
+.new-post-form {
+    width: 50%;
+}
+#post-title {
+    width: 400px;
+}
