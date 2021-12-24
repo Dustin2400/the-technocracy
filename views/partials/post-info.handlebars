@@ -1,11 +1,8 @@
-
-
-
 <div class="title">
     <a href="">
         {{title}}
     </a>
-    <span>by {{user.username}} on {{format_date createdAt}}</span>
+    <span>{{#if user}}by {{user.username}} {{/if}} on {{format_date createdAt}}</span>
 </div>
 <div class="meta">
     {{content}}

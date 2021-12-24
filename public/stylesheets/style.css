@@ -123,3 +123,9 @@ nav button {
     font-family: 'arial black', Arial, Helvetica, sans-serif;
     border: none;
 }
+.edit {
+    border-radius: 5px;
+    background-color: #020122;
+    padding: 12px;
+    margin: 0 50px;
+}

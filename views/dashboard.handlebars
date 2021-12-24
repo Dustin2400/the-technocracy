@@ -1,10 +1,11 @@
 <div class="dashboard">
+    <h2></h2>
     <h2>Your Dashboard</h2>
     <a href="/new-post">Create new post</a>
 </div>
+{{#each posts as |post|}}
 <div class="post">
-    {{> posts }}
+    {{> post-info post}}    
 </div>
-<div class="post">
-    {{> posts }}
-</div>
+<a href="/edit/{{post.id}}" class="edit">Edit Post</a>
+{{/each}}
