@@ -27,17 +27,35 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/dashboard', withAuth, (req, res) => {
-    Post.findAll({
+    User.findAll({
         where: {
-            user_id: req.session.user_id
+            id: req.session.user_id
         },
+        include: [
+            {
+                model: Post,
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text'],
+                include: [
+                    {
+                        model: Post,
+                        attributes: ['title']
+                    }
+                ]
+            }
+        ]
 
     })
     .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({
+        console.log(dbPostData[0].dataValues.posts);
+        const posts = dbPostData[0].dataValues.posts.map(post => post.get({
             plain: true
         }));
-        res.render('dashboard', { posts, loggedIn: true });
+        const comments = dbPostData[0].dataValues.comments.map(comment => comment.get({ plain: true }));
+        console.log(posts, comments);
+        res.render('dashboard', { posts, comments, loggedIn: true });
     })
     .catch(err => {
         console.log(err);
@@ -45,11 +63,11 @@ router.get('/dashboard', withAuth, (req, res) => {
     });
 });
 
-router.get('/new-post', (req, res) => {
+router.get('/new-post', withAuth, (req, res) => {
     res.render('new-post');
 });
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', withAuth, (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
@@ -77,6 +95,34 @@ router.get('/edit/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
+});
+
+router.get('/edit-comment/:id', withAuth, (req, res) => {
+    Comment.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: {
+            model: Post,
+            attributs: ['title']
+        }
+    })
+    .then(dbCommentData => {
+        if (!dbCommentData) {
+            res.status(404).json({ message: 'No comment found with this id'});
+            return
+        }
+        const comment = dbCommentData.get({ plain: true });
+        console.log(comment);
+        res.render('edit-comment', {
+            comment,
+            loggedIn: true
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
 });
 
 router.get('/post/:id', (req, res) => {

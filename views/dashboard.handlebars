@@ -1,11 +1,22 @@
 <div class="dashboard">
-    <h2></h2>
     <h2>Your Dashboard</h2>
     <a href="/new-post">Create new post</a>
 </div>
+<h2>Posts</h2>
 {{#each posts as |post|}}
 <div class="post">
+    
     {{> post-info post}}    
 </div>
 <a href="/edit/{{post.id}}" class="edit">Edit Post</a>
 {{/each}}
+<div class="comments">
+    <h2>Comments</h2>
+    {{# each comments}}
+    <div class="comment">
+        {{comment_text}}<br>
+        on post <em>{{post.title}}</em>
+    </div>
+    <a href="edit-comment/{{id}}" class="edit">Edit Comment</a>
+    {{/each}}
+</div>

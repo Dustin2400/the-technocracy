@@ -1,0 +1,16 @@
+<form class="comment-form">
+    <div>
+        <textarea name="comment-body" id="comment-body">{{comment.comment_text}}</textarea>
+        
+    </div>
+    <div>
+    for post <br>
+    {{comment.post.title}}
+    </div>
+    <div>
+        <button type="submit">Update Comment</button>
+        <button type="button" id="delete">Delete Comment</button>
+    </div>
+</form>
+<script src="/javascript/update-comment.js"></script>
+<script src="/javascript/delete-comment.js"></script>

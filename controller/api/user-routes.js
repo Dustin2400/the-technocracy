@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     User.findAll(
@@ -76,17 +77,18 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'No user with that username!' });
             return;
         }
-        // const validPassword = dbUserData.checkPassword(req.body.password);
-        // if (!validPassword) {
-        //     res.status(400).json({ message: 'Incorrect password!' });
-        //     return;
-        // }
+        console.log(req.body.password);
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
-            res.json({ user: dbUserData, messsage: 'You are now loged in!'});
+            res.json({ user: dbUserData, messsage: 'You are now logged in!'});
         })
     })
 });
@@ -101,7 +103,7 @@ router.post('/logout', (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     User.update(req.body, {
         where: {
             id: req.params.id
@@ -120,7 +122,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     User.destroy({
         where: {
             id: req.params.id
