@@ -140,3 +140,12 @@ nav button {
     border-radius: 5px;
     margin: 13px 24px;
 }
+@media screen and (max-width: 980px) {
+    .form-container {
+        flex-direction: column;
+        align-content: center;
+    }
+    form {
+        width: 45%;
+    }
+}
