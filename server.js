@@ -18,8 +18,9 @@ const sess = {
         db: sequelize
     })
 };
-const app = express();
 const PORT = process.env.PORT || 3001;
+const app = express();
+
 
 app.use(session(sess));
 app.engine('handlebars', hbs.engine);
