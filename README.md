@@ -20,11 +20,9 @@
 
   ## Links
 
-  [GitHub](https://github.com/Dustin2400/E-commerce-back-end)
+  [GitHub](https://github.com/Dustin2400/the-technocracy)
 
-  [Video Part 1](https://watch.screencastify.com/v/1LIRvtQ5qD1eQzcEQPq1)
-
-  [Video Part 2](https://watch.screencastify.com/v/j0Lodch43poRVsq7KOLZ)
+  [Heroku](https://the-technocracy.herokuapp.com/)
 
 ##
   Made with ❤️ by Dustin Grijalva
